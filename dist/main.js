@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("{\n\n//# sourceURL=webpack://todo-list/./src/index.js?\n}");
+eval("{//I want to use Jest for TDD, Webpack, APIs, and the Module Pattern for this project\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?\n}");
 
 /***/ })
 

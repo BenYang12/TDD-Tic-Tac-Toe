@@ -6,6 +6,7 @@ export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs}"],
     plugins: { js },
+    env: { node: true, jest: true },
     extends: ["js/recommended"],
     languageOptions: { globals: globals.browser },
   },
