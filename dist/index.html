@@ -3,18 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <title>Tic Tac Toe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   <script defer src="main.js"></script></head>
   <body>
-    <main>
-      <section id="weather-wrapper">
-        <h1>Weather App</h1>
-        <div id="weather-search">
-          <input type="text" id="search" placeholder="Search by City" />
-          <button id="submit">Submit</button>
-        </div>
-        <div id="weather-output" style="display: none"></div>
-      </section>
-    </main>
+    <h1>Tic Tac Toe</h1>
+
+    <div class="player-info">
+      <label for="player-one">Player One Name (X)</label>
+      <input id="player-one" type="text" placeholder="ex. Lebron James" />
+      <label for="player-two">Player Two Name (O)</label>
+      <input id="player-two" type="text" placeholder="ex. Micheal Jordan" />
+      <button id="startBtn">Start Game</button>
+    </div>
+
+    <div class="result-gif">
+      <img src="#" alt="#" />
+    </div>
+
+    <div id="game">
+      <div class="status"></div>
+      <div class="board"></div>
+      <button id="restartBtn" style="display: none">Restart</button>
+    </div>
   </body>
 </html>
