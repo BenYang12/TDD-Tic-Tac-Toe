@@ -25,7 +25,7 @@ const gameController = (function () {
     }
 
     if (checkWinner()) {
-      //function below
+      //function implemented below
       isOver = true;
       winner = currentPlayer;
     } else if (gameBoard.getBoard().every((square) => square !== "")) {

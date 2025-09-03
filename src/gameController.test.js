@@ -17,12 +17,12 @@ describe("gameController: startGame", () => {
 
 describe("gameController: playTurn basics", () => {
   test("places marker and switches player on a valid move", () => {
-    gameController.startGame("P1", "P2");
-    gameController.playTurn(0); // X placed at  0
+    gameController.startGame("Ben", "John");
+    gameController.playTurn(0); // Ben's marker X placed at  index 0
 
     let { board, currentPlayer } = gameController.getGameState();
     expect(board[0]).toBe("X");
-    expect(currentPlayer.marker).toBe("O"); // switched to O
+    expect(currentPlayer.marker).toBe("O"); // switched to O becuase now it is john
   });
 
   test("rejects move into occupied cell and does not switch turn", () => {
@@ -38,7 +38,7 @@ describe("gameController: playTurn basics", () => {
   });
 });
 
-describe("gameController: win and tie detection", () => {
+describe("gameController: win + tie detection", () => {
   test("detects a win and sets winner/current state", () => {
     // X wins top row: 0,1,2 with O playing elsewhere
     gameController.startGame("Xplayer", "Oplayer");
@@ -67,9 +67,11 @@ describe("gameController: win and tie detection", () => {
 });
 
 describe("gameController: resetGame", () => {
-  test("resets board and state, currentPlayer back to X", () => {
+  test("resets board + state, currentPlayer back to X", () => {
     gameController.startGame("A", "B");
     gameController.playTurn(0);
+    gameController.playTurn(2);
+    gameController.playTurn(5);
     gameController.resetGame();
 
     const { board, currentPlayer, isOver, winner } =
