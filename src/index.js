@@ -1,6 +1,4 @@
 //I want to use Jest for TDD, Webpack, APIs, and the Module Pattern for this project
-const { gameBoard } = require("./gameBoard");
-const { createPlayer } = require("./createPlayer");
 const { gameController } = require("./gameController");
 const { DisplayController } = require("./displayController");
 require("./styles.css");

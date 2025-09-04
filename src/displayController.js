@@ -1,7 +1,6 @@
 //now that console logic is solid i will begin rendering the board visually
 //i'm not modifying the game state, only reflecting it
 const { gameBoard } = require("./gameBoard");
-const { createPlayer } = require("./createPlayer");
 const { gameController } = require("./gameController");
 
 const DisplayController = (function () {

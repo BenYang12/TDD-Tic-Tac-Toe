@@ -15,6 +15,9 @@ const gameBoard = (() => {
   };
   //update board
   const placeMarker = (index, marker) => {
+    if (index < 0 || index > 8) {
+      return false;
+    }
     if (board[index] === "") {
       board[index] = marker;
       return true;

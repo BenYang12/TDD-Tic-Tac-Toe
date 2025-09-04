@@ -1,4 +1,5 @@
 const { gameBoard } = require("./gameBoard");
+beforeEach(() => gameBoard.resetBoard());
 
 describe("test gameboard creation", () => {
   test("default", () => {
