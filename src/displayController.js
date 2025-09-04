@@ -7,6 +7,38 @@ const { gameController } = require("./gameController");
 const DisplayController = (function () {
   const boardContainer = document.querySelector(".board"); //board container is essentially the board area in html document
   const restartBtn = document.querySelector("#restartBtn");
+  const gif = document.querySelector(".result-gif img");
+
+  if (gif) {
+    gif.style.display = "none"; //only happens if the gif exists
+  }
+
+  async function getGif() {
+    if (!gif) {
+      return;
+    }
+    try {
+      const response = await fetch(
+        "https://api.giphy.com/v1/gifs/search?api_key=m4FUqTwXivpShrj2Q37nS94hYiiQsRxD&q=celebration&limit=1&offset=0&rating=pg&lang=en&bundle=messaging_non_clips",
+        { mode: "cors" },
+      );
+      const data = await response.json();
+      const url =
+        data?.data?.[0]?.images?.downsized_medium?.url ||
+        data?.data?.[0]?.images?.original?.url;
+      if (url) {
+        gif.src = url;
+        gif.alt = "celebration gif";
+        gif.style.display = "block";
+      } else {
+        gif.style.display = "none";
+      }
+    } catch (error) {
+      console.log("Failed to fetch GIF", error);
+      gif.style.display = "none";
+    }
+  }
+
   const render = function () {
     //to fix bug of board clumping up I need to clear board everytime I render
     boardContainer.textContent = "";
@@ -35,11 +67,20 @@ const DisplayController = (function () {
     const status = document.querySelector(".status");
     if (isOver) {
       restartBtn.style.display = "block"; //show restart button when game is over
-      status.textContent = winner ? `${winner.name} wins!` : "It's a draw!";
+      if (winner) {
+        status.textContent = `${winner.name} wins!`;
+        // Only show a GIF on a WIN
+        getGif();
+      } else {
+        status.textContent = "It's a draw!";
+        if (gif) gif.style.display = "none"; // hide on draw
+      }
     } else {
       status.textContent = `${currentPlayer.name}'s turn (${currentPlayer.marker})`; //case where switchplayer is called
+      if (gif) gif.style.display = "none"; // hide during normal play
     }
   };
+
   return { render };
 })();
 
